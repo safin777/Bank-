@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Project</title>
+	<link rel = "stylesheet" href="assets/css/cssSignup.css">
+	<link rel = "stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+	<div class="container">
+		<img src="assets/man.png">
+		<form method="post">
+			<div class="form-input">
+				<input type="text" name="fullname" placeholder="Enter Fullname">
+			</div>
+			<div class="form-input">
+				<input type="text" name="email" placeholder="Enter your email">
+			</div>
+			<div class="form-input">
+				<input type="text" name="username" placeholder="Enter username">
+			</div>
+			<div class="form-input">
+				<input type="text" name="contactNo" placeholder="Enter contact number">
+			</div>
+			<div class="form-input">
+				<input type="text" name="address" placeholder="Enter address ">
+			</div>
+			<div class="form-input">
+				<input type="password" name="password" placeholder="Enter password">
+			</div>
+			<div class="form-input">
+				<input type="password" name="confirmPassword" placeholder="Re-Enter password">
+			</div>
+			<div>
+				<p>Choose Gender
+					<input type="radio" name="gender" value="male" checked> Male
+					<input type="radio" name="gender" value="female"> Female
+					<input type="radio" name="gender" value="other"> Other
+				</p>
+			</div>
+			<p id="crd"></p>
+			<input type="submit"  value="Sign Up" class="btn-signup"><br/>
+			<a href="/login">Already have an account? Login</a>
+		</form>
+	</div>
+</body>
+</html>
