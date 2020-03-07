@@ -21,6 +21,83 @@ router.get('*', function(req, res, next){
 });
 
 
+//AddEmployee
+var storage = multer.diskStorage
+({
+		destination: './storage/',
+		filename: function(req, file, cb)
+			  {
+			    cb(null, file.fieldname + '-' + Date.now()+path.extname(file.originalname));
+			  }
+});
+
+var upload = multer({
+  storage: storage
+}).single('image');
+
+
+router.get('/addEmployee',function(req,res)
+{
+   res.render('admin/addEmployee');
+
+});
+//add Employee post
+router.post('/addEmployee',function(req,res)
+{
+    upload(req,res,function(err)
+		{
+       if(err)
+			 {
+				 res.redirect('admin/addEmployee');
+			 }
+			 else
+			 {
+				 var users=
+				 {
+					 userid:"",
+					 fullname:req.body.fullname,
+					 email:req.body.email,
+					 username : req.body.username,
+					 contactNo:req.body.contactNo,
+					 address:req.body.address,
+					 password:req.body.password,
+					 gender:req.body.gender,
+					 type:"employee",
+					 status:req.body.status,
+					 image:req.file.filename
+
+					};
+					admin.addEmployee(users,function(status)
+					{
+           if (status)
+						 {
+							 res.redirect('addEmployee');
+						 }
+
+						 else
+								 {
+                    console.log("data missing");
+								 }
+
+					});
+
+			 }
+
+		});
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 //show admin info
 router.get('/showAdminInfo', function(req, res){
@@ -30,6 +107,65 @@ router.get('/showAdminInfo', function(req, res){
 	});
 });
 
+
+
+// get changepassword
+router.get('/changePassword', function(req, res){
+
+	admin.getByUname(req.session.username,function(results){
+		res.render('admin/changePassword', {users: results});
+	});
+});
+
+//post change password
+router.post('/changePassword', function(req, res)
+  {
+		var users=
+
+					 {
+								 username:req.session.username,
+									password:req.body.password,
+									newPassword:req.body.newPassword,
+									confirmPassword:req.body.confirmPassword
+
+					 };
+
+
+				admin.getByUname(users,function(req,res)
+				{
+
+					 if(results[0].password == users.password)
+					  {
+							if (users.newPassword == users.confirmPassword)
+							    {
+                      admin.updatePassword(users,function(status)
+							         {
+                          if (status)
+								           {
+                              res.redirect('/logout');
+															console.log("password set");
+                            }
+                              else
+                                {
+																res.redirect('/admin/changePassword');
+                                console.log("re enter confirm password");
+                                }
+
+                      });
+									}
+						}
+
+								else
+								{
+									res.redirect('/admin/changePassword');
+									console.log("password does not match");
+								}
+				})
+
+
+
+
+  });
 
 
 //  get edit admin info
@@ -59,7 +195,7 @@ admin.getByUname(users, function(results){
     res.redirect('/login');
 }
         //response.render('volunteer/editprofile',{userList:status});
-      }); 
+      });
 });
 
 
@@ -68,10 +204,10 @@ admin.getByUname(users, function(results){
 
 router.post('/editAdminInfo', function(req, res)
   {
-		
-		console.log("insert into post/editAdminInfo"); 
-			    
-			      
+
+		console.log("insert into post/editAdminInfo");
+
+
 					upload(req, res, function(err)
 					{
 							if(err)
@@ -91,12 +227,12 @@ router.post('/editAdminInfo', function(req, res)
 						                  address:req.body.address,
 						                  position:req.body.position,
 						                  gender:req.body.gender,
-										  image:req.file.filename
+										          image:req.file.filename
 
 			                        };
 
-							                        
-              				
+
+
 
                                 admin.updateProfile(users,function(status)
 								  {
@@ -111,15 +247,15 @@ router.post('/editAdminInfo', function(req, res)
 
                                    });
 
-		                                
-                  
-                            
 
-                            
+
+
+
+
                      }
 
                  });
-                       
+
 
                });
 

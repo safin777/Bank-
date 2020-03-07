@@ -43,13 +43,38 @@ module.exports={
         callback(false);
       }
     });
-  
-  	
-		
 
+  },
 
+  updatePassword: function(users, callback){
+  console.log(users);
+  var sql = "update users set password=? where username=?";
+  db.execute(sql,[users.newPassword,users.username], function(status){
+  if(status){
+      callback(true);
+    }else{
+      callback(false);
+    }
+  });
+
+},
+
+addEmployee:function(users, callback)
+{
+  var sql = "INSERT INTO users (userid,fullname,email,username,contactNo,address,password,gender,type,status,image) values(?,?, ?,?,?,?,?,?,?,?,?)";
+  db.execute(sql,[users.userid,users.fullname,users.email,users.username,users.contactNo,users.address,users.password,users.gender,users.type,users.status,users.image ], function(status)
+  {
+    console.log(sql);
+    if(status){
+        callback(true);
+      }else{
+        callback(false);
+      }
+  });
 
 
 }
+
+
 
 }

@@ -1,0 +1,16 @@
+[
+          check('fullname').notEmpty().withMessage("Name cant be empty"),
+          check('email').isEmail().withMessage("please enter a valid email"),
+          check('username').isLength({min:5}).withMessage("username can not be empty"),
+          check('contactNo').isLength({min:11}).withMessage("contact number should be at least 11 digit"),
+	      check('address').notEmpty().withMessage("address cant be empty"),
+	      check('gender').notEmpty().withMessage("gender cant be empty"),
+		  check('position').notEmpty().withMessage("gender cant be empty")
+
+
+],
+
+
+
+var sql = "INSERT INTO users (userid,fullname,email,username,contactNo,address,password,gender,type,status,image) values(?,?, ?,?,?,?,?,?,?,?,?)";
+db.execute(sql,[users.userid,users.fullname,users.email,users.username,users.contactNo,users.address,users.password,users.gender,users.type,users.status,users.image ],
