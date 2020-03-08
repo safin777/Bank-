@@ -73,7 +73,17 @@ addEmployee:function(users, callback)
   });
 
 
-}
+},
+
+
+
+employeeList: function(callback){
+		var sql = "select * from users where type='employee'" ;
+		db.getResults(sql, [], function(results){
+			console.log(results);
+			callback(results);
+		});
+	}
 
 
 

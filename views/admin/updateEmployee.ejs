@@ -1,0 +1,188 @@
+
+	<!doctype html>
+	<html lang="en">
+	<head>
+
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Project</title>
+		<link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel = "stylesheet" href="/assets/css/EditAdminInfo.css">
+		<link href="/assets/css/animate.min.css" rel="stylesheet"/>
+		<link href="/assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+		<link href="font-awesome.css" rel="stylesheet">
+		<link href="font-family.css" rel='stylesheet'>
+		<link href="/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+		<script src="jquery-2.2.3.min.js"></script>
+		<script src="/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+		<script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+		<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+		<script src="/assets/js/light-bootstrap-dashboard.js"></script>
+		<script src="/assets/js/chartist.min.js"></script>
+		<link rel = "stylesheet" href="/assets/css/ShowCustomerInfo.css">
+
+	</head>
+
+  <body>
+
+		<div class="sidebar" data-color="green" data-image="/assets/img/money.jpg">
+
+			<div class="sidebar-wrapper">
+				<div class="logo">
+					<p>Admin Dashboard</p>
+					<br/>
+					<br/>
+				</div>
+
+				<ul class="nav">
+					<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-globe"></i>
+										<span class="notification"></span>Admin Profile
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="/admin/editAdminInfo">Edit Profile</a></li>
+	                <li><a href="/admin/showAdminInfo">Show Profile</a></li>
+	                <li><a href="/admin/changePassword">Change password</a></li>
+	                <li><a href="/logout">Sign Out</a></li>
+								</ul>
+					</li>
+					<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-globe"></i>
+										<span class="notification"></span>Employee Section
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Add Employee</a></li>
+									<li><a href="#">Update Employee</a></li>
+									<li><a href="#">Delete Employee</a></li>
+									<li><a href="#">Employee List</a></li>
+								</ul>
+					</li>
+					<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-globe"></i>
+										<span class="notification"></span>Agent Section
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Add Agent</a></li>
+									<li><a href="#">Delete Agent</a></li>
+									<li><a href="#">View Agent info</a></li>
+									<li><a href="#">Update Agent</a></li>
+								</ul>
+					</li>
+
+					<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-globe"></i>
+										<span class="notification"></span>Transaction
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">All transaction</a></li>
+									<li><a href="#">Customer transaction</a></li>
+									<li><a href="#">Employee transaction</a></li>
+									<li><a href="#">Banking Transaction</a></li>
+									<li><a href="#">Agent Transaction</a></li>
+									<li><a href="#">Tax Transaction</a></li>
+									<li><a href="#">Mobile TopUp </a></li>
+								</ul>
+					</li>
+
+					<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<i class="fa fa-globe"></i>
+										<span class="notification"></span>Others
+								</a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Upload Notice</a></li>
+									<li><a href="#">Add offer</a></li>
+									<li><a href="#">Reports</a></li>
+
+								</ul>
+					</li>
+
+				</ul>
+
+			</div>
+
+		</div>
+		<div>
+			<nav class="navbar navbar-default navbar-fixed">
+				<div class="container-fluid">
+					<div class="navbar-header">
+
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+              <li>
+                <div class="form-input">
+                  <input type="text" name="search" placeholder="search id">|<a class="btn btn-primary" href="/admin/searchEmployee" role="button">Search</a>
+                </div>
+              </li>
+							<li>
+								<a href="/admin"> Home</a>
+							</li>
+							<li>
+								<a href="/logout">
+									Log out
+								</a>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+
+
+<div class="container">
+			<img id="image" src="/storage/<%= users.image %>">
+			<h2>Update Employee </h2>
+			<form method="post" enctype="multipart/form-data">
+        <div class="form-input">
+  				<input type="text" name="fullname" value="<%=users.fullname %>">
+  			</div>
+  			<div class="form-input">
+  				<input type="text" name="email" value="<%=users.email %>">
+  			</div>
+  			<div class="form-input">
+  				<input type="text" name="username" value="<%=users.username %>">
+  			</div>
+  			<div class="form-input">
+  				<input type="text" name="contactNo" value="<%=users.contactNo %>">
+  			</div>
+  			<div class="form-input">
+  				<input type="text" name="address"value="<%=users.address %>">
+  			</div>
+
+        <div class="form-input">
+          <input type="text" name="position" value="<%=users.position %>">
+        </div>
+
+  			<div>
+  				<p>Choose Gender
+  					<input type="radio" name="gender" value="male" checked> Male
+  					<input type="radio" name="gender" value="female"> Female
+  					<input type="radio" name="gender" value="other"> Other
+  				</p>
+
+
+					<br/></br>
+		                   Choose:<input type="file" name="image" id="fileToUpload">
+				</div>
+				</br>
+
+				<div class="form-input">
+					<input type="submit" value="Update" class="btn-edit" >
+				</div>
+
+				<br/>
+			</form>
+		</div>
+	</div>
+
+
+
+	</body>
+	</html>

@@ -21,6 +21,16 @@ router.get('*', function(req, res, next){
 });
 
 
+//employeeList get
+
+router.get('/employeeList', function(req, res){
+
+	admin.employeeList(function(results){
+		res.render('admin/employeeList', {users: results});
+	});
+});
+
+
 //AddEmployee
 var storage = multer.diskStorage
 ({
@@ -296,7 +306,34 @@ router.get('/',function(req,res)
       }
     );
 
+router.get('/updateEmployee',function(req,res)
+{
+   res.render('admin/updateEmployee');
 
+});
+
+router.post('/updateEmployee',function(req,res)
+{
+	var users=
+	{
+		userid:"",
+		fullname:"",
+		email:"",
+		username :"",
+		contactNo:"",
+		address:"",
+		password:"",
+		gender:"",
+		type:"",
+		status:"",
+		image:""
+
+	 };
+
+		res.render('admin/updateEmployee', {users});
+
+
+});
 
 
 

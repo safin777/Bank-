@@ -49,7 +49,7 @@
                        {
                          if (results[0].type =='admin' && results[0].status == 'active')
                          {
-                            console.log('data not given in login page!');
+                          //  console.log('data not given in login page!');
                            req.session.username = users.username;
                            console.log(req.session.username);
 
