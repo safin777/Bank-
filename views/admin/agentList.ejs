@@ -149,7 +149,7 @@
 		</div>
 
 		<div>
-			<h3 align="center">Employee List</h3>
+			<h3 align="center">Agent List</h3>
 			<form  method="post">
 			<div align="center" style="overflow-x:auto;">
 
@@ -210,11 +210,11 @@
             <%= users[i].image%>
           </td>
           <td>
-						<button class="btn btn-primary"  formaction="/admin/update/<%= users[i].userid %>"  type="submit" style="background-color: green;color: white;">
+						<button class="btn btn-primary"  formaction="/admin/updateA/<%= users[i].userid %>"  type="submit" style="background-color: green;color: white;">
 					    <i class="fa fa-refresh"> </i> update
 					</button>
 
-					  <button class="btn btn-primary" formaction="/admin/delete/<%=users[i].userid %>" type="submit" style="background-color: red;color: white;">
+					  <button class="btn btn-primary" formaction="/admin/deleteA/<%=users[i].userid %>" type="submit" style="background-color: red;color: white;">
 					      <i class="fa fa-trash"> </i>delete
 					  </button>
           </td>

@@ -14,3 +14,112 @@
 
 var sql = "INSERT INTO users (userid,fullname,email,username,contactNo,address,password,gender,type,status,image) values(?,?, ?,?,?,?,?,?,?,?,?)";
 db.execute(sql,[users.userid,users.fullname,users.email,users.username,users.contactNo,users.address,users.password,users.gender,users.type,users.status,users.image ],
+
+
+
+
+
+/////////////////////////////////////////
+
+router.post('/employeeList/update/:id', function(req, res){
+
+	upload(req,res,function(err)
+	{
+						 if(err)
+						 {
+							 res.redirect('admin/addEmployee');
+						 }
+						 else
+						 {
+
+						var users = {
+						    userid: req.params.id,
+								fullname:req.body.fullname,
+								email:req.body.email,
+								username : req.body.username,
+								contactNo:req.body.contactNo,
+								address:req.body.address,
+								password:req.body.password,
+								gender:req.body.gender,
+								type:req.body.type,
+								status:req.body.status,
+								image:req.file.filename
+
+						};
+
+						//console.log(user);
+
+						admin.updateEmployee(users, function(status){
+							if(status){
+								res.render('admin/employeeList');
+							}else{
+								res.render('admin/admin');
+							}
+						});
+					}
+			});
+});
+
+
+
+\\\\\
+router.get('/employeeList/update/:id',function(req,res){
+  admin.getById(req.params.id,function(results){
+
+		if (results.length> 0)
+		    {
+					console.log(results);
+					res.render('admin/updateEmployee',{users:results[0]});
+
+				}
+
+				else {
+					res.render('admin/employeeList');
+				}
+	});
+
+} );
+
+
+
+///	//
+
+
+
+		var users = {
+			userid: req.params.id,
+			fullname:req.body.fullname,
+			email:req.body.email,
+			username : req.body.username,
+			contactNo:req.body.contactNo,
+			address:req.body.address,
+			password:req.body.password,
+			gender:req.body.gender,
+			type:req.body.type,
+			status:req.body.status,
+
+		};
+
+
+console.log(user);
+
+  admin.updateEmployee(users, function(status){
+    if(status){
+
+      res.redirect('/admin/employeeList');
+    }else{
+      res.redirect('/admin/update/'+req.params.id);
+    }
+  });
+
+
+
+  /////
+
+  <button class="btn btn-primary"  formaction="/admin/update/<%= users[i].userid %>"  type="submit" style="background-color: green;color: white;">
+    <i class="fa fa-refresh"> </i> update
+</button>
+
+  <button class="btn btn-primary" formaction="/admin/delete/<%=users[i].userid %>" type="submit" style="background-color: red;color: white;">
+      <i class="fa fa-trash"> </i>delete
+  </button>

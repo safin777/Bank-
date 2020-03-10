@@ -1,28 +1,6 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-  <style>
-    table
-    {
-      font-family: arial, sans-serif;
-      width:60%;
-    }
-
-    table,td, th
-    {
-      border: 3px solid #dddddd;
-      text-align: center;
-      padding: 150px;
-      height:30px;
-
-    }
-
-    tr:nth-child(even)
-    {
-      background-color: #dddddd;
-    }
-  </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project</title>
@@ -45,7 +23,7 @@
 
 <body>
 
-  <div class="sidebar" data-color="green" data-image="assets/img/money.jpg">
+  <div class="sidebar" data-color="green" data-image="/assets/img/money.jpg">
 
     <div class="sidebar-wrapper">
       <div class="logo">
@@ -73,9 +51,7 @@
                   <span class="notification"></span>Employee Section
               </a>
               <ul class="dropdown-menu">
-                <li><a href="admin/addEmployee">Add Employee</a></li>
-                <li><a href="admin/updateEmployee">Update Employee</a></li>
-                <li><a href="#">Delete Employee</a></li>
+                <li><a href="/admin/addEmployee">Add Employee</a></li>
                 <li><a href="/admin/employeeList">Employee List</a></li>
               </ul>
         </li>
@@ -85,10 +61,8 @@
                   <span class="notification"></span>Agent Section
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Add Agent</a></li>
-                <li><a href="#">Delete Agent</a></li>
-                <li><a href="#">View Agent info</a></li>
-                <li><a href="#">Update Agent</a></li>
+                <li><a href="admin/addAgent">Add Agent</a></li>
+                <li><a href="admin/agentList">Agent list</a></li>
               </ul>
         </li>
 
@@ -98,10 +72,10 @@
                   <span class="notification"></span>Transaction
               </a>
               <ul class="dropdown-menu">
-                <li><a href="#">All transaction</a></li>
+                <li><a href="admin/allTransaction">All transaction</a></li>
                 <li><a href="#">Customer transaction</a></li>
-                <li><a href="#">Employee transaction</a></li>
-                <li><a href="#">Banking Transaction</a></li>
+                <li><a href="admin/employeeTransaction">Employee transaction</a></li>
+                  <li><a href="admin/bankTransaction">Banking Transaction</a></li>
                 <li><a href="#">Agent Transaction</a></li>
                 <li><a href="#">Tax Transaction</a></li>
                 <li><a href="#">Mobile TopUp </a></li>

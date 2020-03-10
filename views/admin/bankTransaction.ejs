@@ -149,74 +149,42 @@
 		</div>
 
 		<div>
-			<h3 align="center">Employee List</h3>
+			<h3 align="center">Bank Transaction</h3>
 			<form  method="post">
 			<div align="center" style="overflow-x:auto;">
 
 				<table align="right">
 				<tr>
 
-					<th><b>userid</b></th>
-        	<th><b>fullname</b></th>
-						<th><b>email</b></th>
-          	<th><b>username</b></th>
-					<th><b>contact</b></th>
-						<th><b>address</b></th>
-        	<th><b>type</b></th>
-          	<th><b>status</b></th>
-          	<th><b>position</b></th>
-        	<th><b>salary</b></th>
-          	<th><b>gender</b></th>
-							<th><b>image</b></th>
-        	<th><b>Action</b></th>
+					<th><b>Tid</b></th>
+        	<th><b>sender</b></th>
+						<th><b>Amount</b></th>
+          	<th><b>bank name</b></th>
+					  <th><b>bank account</b></th>
+        	  <th><b>Action</b></th>
 					</tr>
-           <% for (var i=0; i<users.length; i++) { %>
+           <% for (var i=0; i<transaction.length; i++) { %>
 
 					<tr>
           <td>
-            <%= users[i].userid %>
+            <%= transaction[i].tid %>
           </td>
           <td>
-            <%= users[i].fullname%>
+            <%= transaction[i].contacNo%>
           </td>
           <td>
-            <%=users[i].email%>
+            <%=transaction[i].amount%>
           </td>
           <td>
-            <%= users[i].username%>
+            <%= transaction[i].bname%>
           </td>
           <td>
-            <%= users[i].contactNo%>
+            <%=transaction[i].bacc %>
           </td>
           <td>
-            <%= users[i].address %>
-          </td>
-          <td>
-            <%= users[i].type%>
-          </td>
-          <td>
-            <%=users[i].status%>
-          </td>
-          <td>
-            <%= users[i].position%>
-          </td>
-          <td>
-            <%= users[i].salary%>
-          </td>
-          <td>
-            <%= users[i].gender%>
-          </td>
-					<td>
-            <%= users[i].image%>
-          </td>
-          <td>
-						<button class="btn btn-primary"  formaction="/admin/update/<%= users[i].userid %>"  type="submit" style="background-color: green;color: white;">
-					    <i class="fa fa-refresh"> </i> update
-					</button>
-
-					  <button class="btn btn-primary" formaction="/admin/delete/<%=users[i].userid %>" type="submit" style="background-color: red;color: white;">
-					      <i class="fa fa-trash"> </i>delete
-					  </button>
+            <button class="btn btn-primary" formaction="/admin/deleteTransaction/<%=transaction[i].tid%>" type="submit" style="background-color: red;color: white;">
+                <i class="fa fa-trash"> </i>Delete
+            </button>
           </td>
 
 					</tr>

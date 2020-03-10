@@ -66,7 +66,7 @@ router.post('/',
         {   userModel.all(users,function (results) {
 
 
-                        if(users.username == results[0].username && users.email==results[0].email && users.password != users.confirmPassword )
+                        if(users.username == results[0].username && users.email==results[0].email && users.password != users.confirmPassword && users.contactNo == results[0].contactNo )
                         {
                           console.log("same user name and password");
                            res.redirect('/signup');
